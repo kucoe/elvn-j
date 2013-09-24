@@ -62,7 +62,7 @@ public class TaskResult extends BaseResult {
             return forward(new SwitchListEdit(), display, config);
         }
         updateTask(new Task(null, Blue.toString(), text, false, null), config, currentList);
-        return forward(new SwitchListColor(currentList), display, config);
+        return forward(new SwitchListColor(ListColor.color(currentList)), display, config);
     }
     
     protected void updateTask(final Task task, final Config config, final String currentList) throws Exception {
@@ -94,7 +94,7 @@ public class TaskResult extends BaseResult {
         config.saveTask(update);
     }
     
-    protected String processText(final String oldText, String newText) {
+    protected String processText(final String oldText, final String newText) {
         String t = newText;
         if (t.contains("%")) {
             String[] split = t.split("%");

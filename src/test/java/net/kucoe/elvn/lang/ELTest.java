@@ -12,7 +12,7 @@ public class ELTest {
     public void testSwitchListColor() {
         ELResult process = EL.process("/all");
         assertTrue("Result type is wrong", process instanceof SwitchListColor);
-        assertEquals("all", ((SwitchListColor) process).color);
+        assertEquals("all", ((SwitchListColor) process).color.toString());
     }
     
     @Test
@@ -56,6 +56,13 @@ public class ELTest {
     }
     
     @Test
+    public void testSwitchTimerCommand() {
+        ELResult process = EL.process("$:");
+        assertTrue("Result type is wrong", process instanceof TimerCommand);
+        assertEquals(":", ((TimerCommand) process).command);
+    }
+    
+    @Test
     public void testSwitchStatus() {
         ELResult process = EL.process("!");
         assertTrue("Result type is wrong", process instanceof SwitchStatus);
@@ -93,13 +100,6 @@ public class ELTest {
         ELResult process = EL.process("!s");
         assertTrue("Result type is wrong", process instanceof TaskResult);
         assertEquals("!s", ((TaskResult) process).text);
-    }
-    
-    @Test
-    public void testSwitchTimerCommand() {
-        ELResult process = EL.process("$:");
-        assertTrue("Result type is wrong", process instanceof TimerCommand);
-        assertEquals(":", ((TimerCommand) process).command);
     }
     
     @Test
