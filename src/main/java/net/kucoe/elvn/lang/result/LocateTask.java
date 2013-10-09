@@ -64,7 +64,7 @@ public class LocateTask extends TaskResult {
                     if (color != null) {
                         config.removeIdea(idea);
                         config.saveTask(new Task(idea.getId(), list, idea.getText(), false, null));
-                        return forward(new SwitchListColor(color.toString()), display, config);
+                        return forward(new SwitchListColor(color), display, config);
                     }
                 }
             }
@@ -79,7 +79,7 @@ public class LocateTask extends TaskResult {
                 updateTask(task, config, currentList);
             }
         }
-        return reshow ? forward(new SwitchListColor(currentList), display, config) : currentList;
+        return reshow ? forward(new SwitchListColor(ListColor.color(currentList)), display, config) : currentList;
     }
     
     protected Idea getIdea(final Config config) throws IOException, JsonException {

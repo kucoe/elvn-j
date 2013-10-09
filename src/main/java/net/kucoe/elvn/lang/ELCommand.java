@@ -57,7 +57,7 @@ public enum ELCommand {
                 if (color == null) {
                     result = new SwitchListLabel(processing);
                 } else {
-                    result = new SwitchListColor(processing);
+                    result = new SwitchListColor(color);
                 }
             }
             return super.doNext();

@@ -41,7 +41,7 @@ public class elvn {
         Timer.setTimerView(timerView);
         Timer.setProcess(new ThreadProcess());
         try {
-            ELResult result = new SwitchListColor(ListColor.Today.toString());
+            ELResult result = new SwitchListColor(ListColor.Today);
             String command = joinArgs(args);
             if (command != null) {
                 result = EL.process(command);

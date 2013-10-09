@@ -65,13 +65,13 @@ public class GroupTaskCommand extends TaskCommand {
             if (Run.alias().equals(command)) {
                 config.runTask(first, null);
             }
-            return forward(new SwitchListColor(currentList), display, config);
+            return forward(new SwitchListColor(ListColor.color(currentList)), display, config);
         }
         return null;
     }
     
-    protected int[] checkPositions(final Config config, String currentList, boolean ideas) throws IOException,
-            JsonException {
+    protected int[] checkPositions(final Config config, final String currentList, final boolean ideas)
+            throws IOException, JsonException {
         int[] pos = positions;
         if (pos == null) {
             int size = 0;
@@ -91,8 +91,8 @@ public class GroupTaskCommand extends TaskCommand {
         return pos;
     }
     
-    protected TaskCommand createTaskCommand(final Config config, String currentList, boolean ideas, String cmd, int i)
-            throws IOException, JsonException {
+    protected TaskCommand createTaskCommand(final Config config, final String currentList, final boolean ideas,
+            final String cmd, final int i) throws IOException, JsonException {
         TaskCommand command = new TaskCommand(i, cmd);
         if (ideas) {
             command.item = command.getIdea(config);

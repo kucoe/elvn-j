@@ -87,7 +87,7 @@ public class TaskCommand extends LocateTask {
          * @param alias
          * @return {@link Command}
          */
-        public static Command command(String alias) {
+        public static Command command(final String alias) {
             return commands.get(alias);
         }
         
@@ -128,7 +128,7 @@ public class TaskCommand extends LocateTask {
                 } else {
                     config.removeIdea(idea);
                     config.saveTask(new Task(idea.getId(), command, idea.getText(), false, null));
-                    return forward(new SwitchListColor(ListColor.All.toString()), display, config);
+                    return forward(new SwitchListColor(ListColor.All), display, config);
                 }
             }
             return forward(new SwitchIdeas(), display, config);
@@ -162,13 +162,13 @@ public class TaskCommand extends LocateTask {
                 }
             }
             if (reshow) {
-                return forward(new SwitchListColor(currentList), display, config);
+                return forward(new SwitchListColor(ListColor.color(currentList)), display, config);
             }
         }
         return null;
     }
     
-    protected static String getHelpMessage(String command) {
+    protected static String getHelpMessage(final String command) {
         String helpMessage =
                 "\tWrong task command: " + command + "\n" + "\tAvailable commands:\n" + "\t> run task\n"
                         + "\t@ convert task to idea\n" + "\t+ make task planned\n" + "\t- make task not planned\n"
