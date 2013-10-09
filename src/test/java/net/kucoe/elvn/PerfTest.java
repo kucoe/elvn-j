@@ -12,12 +12,12 @@ public class PerfTest extends AbstractConfigTest {
     public void testBigCreate() throws Exception {
         TaskResult command = new TaskResult("b", "a");
         long s = System.currentTimeMillis();
-        for (int i = 0; i < 5000; i++) {
+        for (int i = 0; i < 2000; i++) {
             command.execute(display, config);
         }
         long e = System.currentTimeMillis();
         System.out.println(e - s + "ms");
         java.util.List<Task> tasks = config.getList(ListColor.Blue).getTasks();
-        assertEquals(5001, tasks.size());
+        assertEquals(2001, tasks.size());
     }
 }
