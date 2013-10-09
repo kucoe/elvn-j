@@ -47,7 +47,7 @@ public class Idea implements Comparable<Idea> {
     @Override
     public boolean equals(final Object obj) {
         if (obj instanceof Idea) {
-            return getId().equals(((Idea) obj).getId());
+            return getId() != null && getId().equals(((Idea) obj).getId());
         }
         return false;
     }
